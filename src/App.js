@@ -3,7 +3,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import { Routes, Route } from "react-router-dom";
-import Products from "./components/Products/Products";
+import Product from "./components/Products/Product/Product";
+import { RequiredAuth } from "./hoc/RequiredAuth";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
           <Login />
           <Routes>
             <Route path="" element={<Home />} />
-            <Route path="/products" element={<Products />} />
+            <Route
+              path="/products"
+              element={
+                <RequiredAuth>
+                  <Product />
+                </RequiredAuth>
+              }
+            />
           </Routes>
         </div>
       }

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-const RequireAuth = ({ children }) => {
+export const RequiredAuth = ({ children }) => {
   const { isAuth } = useContext(AuthContext);
   const { pathname } = useLocation();
   console.log(pathname);
@@ -15,5 +15,3 @@ const RequireAuth = ({ children }) => {
     return <Navigate to="/login" state={{ from: pathname }} replace />;
   }
 };
-
-export default RequiredAuth;
